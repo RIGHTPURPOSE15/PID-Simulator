@@ -105,6 +105,7 @@ def create_animation(kp, save_path_gif, save_path_png):
         
         # Error plot
         ax3.plot(t[:frame], errors[:frame], 'g-', label='Error')
+        ax3.plot(t, [0] * len(t), 'r--', label='Setpoint')
         ax3.set_xlim(0, 30)
         ax3.set_ylim(-2, 2)
         ax3.set_title('Error')
