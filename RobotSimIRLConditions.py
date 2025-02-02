@@ -93,16 +93,16 @@ pid_configs = [
 plt.figure(figsize=(15, 7))
 
 # Plot tolerance bands
-plt.axhline(y=1.02, color='red', linestyle=':', linewidth=1, alpha=0.5, label='±2% Tolerance')
+plt.axhline(y=1.02, color='red', linestyle=':', linewidth=1, alpha=0.5, label='±0.5% Tolerance')
 plt.axhline(y=0.98, color='red', linestyle=':', linewidth=1, alpha=0.5)
 
 for config in pid_configs:
     t, position, speed, errors = simulate_pid(**config)
     label = "Kp=" + str(config['kp']) + ", Ki=" + str(config['ki']) + ", Kd=" + str(config['kd'])
-    plt.plot(t, position, label=label, linewidth=2)
+    plt.plot(t, position, label=label, linewidth=1.25)
 
 # Add setpoint line
-plt.axhline(y=1.0, color='black', linestyle='--', linewidth=2, label='Setpoint')
+plt.axhline(y=1.0, color='black', linestyle='--', linewidth=1, label='Setpoint')
 
 plt.title('Position Response with Different PID Parameters', fontsize=16)
 plt.xlabel('Time (s)', fontsize=14)
@@ -112,7 +112,7 @@ plt.yticks(fontsize=12)
 plt.grid(True, which='both', linestyle='--', linewidth=0.5)
 plt.legend(fontsize=12)
 plt.tight_layout()
-plt.savefig('pid_tuning_comparison_with_settling.png')
+plt.savefig('pid_tuning_comparison.png')
 plt.close()
 
 # Calculate performance metrics including settling time
@@ -134,5 +134,5 @@ for config in pid_configs:
 
 results_df = pd.DataFrame(results)
 print("\
-PID Tuning Performance Metrics (including Settling Time):")
+PID Tuning Performance Metrics:")
 print(results_df)
