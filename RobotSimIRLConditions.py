@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import pandas as pd
+import config as cg
 
 class PIDController:
     def __init__(self, kp, ki, kd):
@@ -83,12 +84,9 @@ def simulate_pid(kp, ki, kd, simulation_time=120, dt=0.01):
     
     return t, position, speed, errors
 
-# PID configurations
-pid_configs = [
-    {'kp': 0.1, 'ki': 0.1, 'kd': 0.1},  # P only
-    {'kp': 0.1, 'ki': 0.2, 'kd': 0.1},  # PI
-    {'kp': 0.1, 'ki': 0.3, 'kd': 0.1}   # PID
-]
+config1 = cg.config(0.1, 1, 0.2)
+
+pid_configs = config1.Kp()
 
 plt.figure(figsize=(15, 7))
 
@@ -112,7 +110,7 @@ plt.yticks(fontsize=12)
 plt.grid(True, which='both', linestyle='--', linewidth=0.5)
 plt.legend(fontsize=12)
 plt.tight_layout()
-plt.savefig('pid_tuning_comparison.png')
+plt.savefig(f'Sims\pid_tuning_comparison.png')
 plt.close()
 
 # Calculate performance metrics including settling time
