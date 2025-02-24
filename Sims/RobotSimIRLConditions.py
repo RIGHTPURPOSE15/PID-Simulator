@@ -5,10 +5,6 @@ import pandas as pd
 import config as cg
 
 simTime = 120
-
-# -------------------------------
-# PID Controller Class Definition
-# -------------------------------
 class PIDController:
     def __init__(self, kp, ki, kd):
         self.kp = kp
