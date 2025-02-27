@@ -1,5 +1,5 @@
 # config.py
-
+fixed = 0.1
 class config:
     def __init__(self, low, high, increment):
         """
@@ -10,7 +10,7 @@ class config:
         self.high = high
         self.increment = increment
 
-    def Kp(self, fixed_ki=0.1, fixed_kd=0.1):
+    def Kp(self, fixed_ki=fixed, fixed_kd=fixed):
         """
         Generate a list of configurations with Kp varying,
         and Ki and Kd fixed to the provided values.
@@ -22,7 +22,7 @@ class config:
             kp += self.increment
         return mods
 
-    def Ki(self, fixed_kp=0.1, fixed_kd=0.1):
+    def Ki(self, fixed_kp = fixed, fixed_kd=fixed):
         """
         Generate a list of configurations with Ki varying,
         and Kp and Kd fixed.
@@ -34,7 +34,7 @@ class config:
             ki += self.increment
         return mods
 
-    def Kd(self, fixed_kp=0.1, fixed_ki=0.1):
+    def Kd(self, fixed_kp=fixed, fixed_ki=0.1):
         """
         Generate a list of configurations with Kd varying,
         and Kp and Ki fixed.
